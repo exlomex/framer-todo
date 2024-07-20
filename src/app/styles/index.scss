@@ -1,10 +1,7 @@
 @import 'reset.css';
 @import 'variables/global-vars';
 
-.wrapper {
-    min-height: 100%;
-    width: 100%;
-    overflow: hidden;
+.body {
 
     //  color
     color: var(--color);
@@ -12,18 +9,3 @@
     //  bg
     background-color: var(--bg);
 }
-
-//*::-webkit-scrollbar {
-//    width: 6px;
-//    height: 6px;
-//}
-//
-//*::-webkit-scrollbar-track {
-//    background: transparent;
-//}
-//
-//*::-webkit-scrollbar-thumb {
-//    background-color: var(--card);
-//    border-radius: 20px;
-//}
-

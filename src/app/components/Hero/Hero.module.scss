@@ -1,0 +1,19 @@
+.Hero {
+  max-width: 800px;
+  padding: 30px;
+  margin: 0 auto;
+
+  .headerName {
+    display: flex;
+    justify-content: center;
+    font-size: 1.4em;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+
+  .searchContainer {
+    display: flex;
+    justify-content: space-between;
+    gap: 0 15px;
+  }
+}
