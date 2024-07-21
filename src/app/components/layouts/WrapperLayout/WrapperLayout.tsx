@@ -1,4 +1,4 @@
-import { classNames } from '@/app/components/lib/ClassNames';
+import { classNames } from '@/app/lib/ClassNames';
 import { ReactNode } from 'react';
 import cls from './WrapperLayout.module.scss';
 

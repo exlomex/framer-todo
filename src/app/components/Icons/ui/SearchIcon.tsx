@@ -1,4 +1,4 @@
-import { classNames } from '@/app/components/lib/classNames';
+import { classNames } from '@/app/lib/classNames';
 import SearchIconSVG from '@/app/assets/search.svg';
 
 interface SearchIconProps{

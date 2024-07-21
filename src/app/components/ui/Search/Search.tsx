@@ -1,4 +1,4 @@
-import { classNames } from '@/app/components/lib/classNames';
+import { classNames } from '@/app/lib/classNames';
 import React, { InputHTMLAttributes, useCallback } from 'react';
 import { SearchIcon } from '@/app/components/Icons/ui/SearchIcon';
 import cls from './Search.module.scss';
