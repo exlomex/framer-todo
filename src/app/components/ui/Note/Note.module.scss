@@ -1,0 +1,16 @@
+.Note {
+  display: flex;
+  justify-content: space-between;
+
+  padding-bottom: 35px;
+
+  .leftSideNote {
+    display: flex;
+    gap: 0 15px;
+    align-items: center;
+  }
+}
+
+.status {
+  text-decoration: line-through;
+}

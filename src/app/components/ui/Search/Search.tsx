@@ -11,7 +11,7 @@ type HtmlInputProps = Omit<
 interface SearchProps extends HtmlInputProps{
     className?: string;
     value?: string
-    onChange?: (value: string) => void;
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const Search = (props: SearchProps) => {
@@ -19,16 +19,12 @@ export const Search = (props: SearchProps) => {
         className, value, onChange, ...additional
     } = props;
 
-    const onChangeHandler = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-        onChange?.(e.target.value);
-    }, [onChange]);
-
     return (
         <div className={cls.SearchWrapper}>
             <input
                 className={classNames(cls.Search, {}, [className])}
                 value={value}
-                onChange={onChangeHandler}
+                onChange={onChange}
                 {...additional}
             />
             <SearchIcon className={cls.searchIcon}/>

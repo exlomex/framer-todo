@@ -1,0 +1,22 @@
+.CheckBox {
+  width: 26px;
+  height: 26px;
+  background-color: var(--bg);
+  border: 1px var(--main-color) solid;
+  border-radius: 3px ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &[data-checked] {
+    /* ваши стили здесь */
+    background-color: var(--main-color); /* пример стиля */
+    svg {
+      opacity: 1;
+    }
+  }
+
+  svg {
+    opacity: 0;
+    fill: var(--bg);
+  }
+}

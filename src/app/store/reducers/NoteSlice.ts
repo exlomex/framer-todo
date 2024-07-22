@@ -6,6 +6,7 @@ const initialState: NoteSliceSchema = [
         id: 1,
         status: false,
         title: 'default',
+        editStatus: false,
     },
 ];
 export const noteSlice = createSlice({
@@ -20,6 +21,13 @@ export const noteSlice = createSlice({
             if (note) note.title = action.payload.title;
         },
         changeStatus: (
+            state: NoteSliceSchema,
+            action: PayloadAction<{id: number}>,
+        ) => {
+            const note = state.find((note) => note.id === action.payload.id);
+            if (note) note.status = !note.status;
+        },
+        changeEditStatus: (
             state: NoteSliceSchema,
             action: PayloadAction<{id: number}>,
         ) => {
