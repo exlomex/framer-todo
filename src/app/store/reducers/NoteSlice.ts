@@ -32,7 +32,7 @@ export const noteSlice = createSlice({
             action: PayloadAction<{id: number}>,
         ) => {
             const note = state.find((note) => note.id === action.payload.id);
-            if (note) note.status = !note.status;
+            if (note) note.editStatus = !note.editStatus;
         },
         addNote: (
             state: NoteSliceSchema,

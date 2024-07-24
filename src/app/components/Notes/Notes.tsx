@@ -1,10 +1,13 @@
 import { classNames } from '@/app/lib/classNames';
 import { useAppDispatch } from '@/app/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
-import { StateSchema } from '@/app/store/config';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { NoteActions } from '@/app/store/reducers/NoteSlice';
 import { Note } from '@/app/components/ui/Note';
+import { getSearchQuery } from '@/app/store/selectors/getSearchQuery';
+import { getNotes } from '@/app/store/selectors/getNotes';
+import { getFilterValue } from '@/app/store/selectors/getFilterValue';
+import { filterValues } from '@/app/store/reducers/FilterSliceSchema';
 import cls from './Notes.module.scss';
 
 interface NotesProps {
@@ -16,9 +19,9 @@ export const Notes = (props: NotesProps) => {
 
     const dispatch = useAppDispatch();
 
-    let notes = useSelector((state: StateSchema) => state.notes);
+    let notes = useSelector(getNotes);
 
-    const search = useSelector((state: StateSchema) => state.search.query);
+    const search = useSelector(getSearchQuery);
 
     useEffect(() => {
         dispatch(NoteActions.changeStatus({ id: 1 }));
@@ -34,12 +37,31 @@ export const Notes = (props: NotesProps) => {
         }));
     }, [dispatch]);
 
-    notes = notes.filter((note) => note.title.includes(search));
+    const filterValue = useSelector(getFilterValue);
+
+    const filterValuesCases = (note: Note) => {
+        switch (filterValue) {
+        case filterValues.ALL: {
+            return note;
+        } case filterValues.UNCOMPLETED: {
+            return !note.status;
+        } case filterValues.COMPLETED: {
+            return note.status;
+        }
+        default: return false;
+        }
+    };
+
+    notes = notes.filter((note) => note.title.includes(search)).filter(filterValuesCases);
 
     return (
         <div className={classNames(cls.Notes, {}, [className])}>
             {notes.map((note) => (
-                <Note key={note.id} status={note.status} title={note.title} id={note.id}/>
+                <Note
+                    key={note.id}
+                    status={note.status}
+                    title={note.title} id={note.id}
+                    editStatus={note.editStatus}/>
             ))}
         </div>
     );

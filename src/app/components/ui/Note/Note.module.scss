@@ -6,8 +6,35 @@
 
   .leftSideNote {
     display: flex;
-    gap: 0 15px;
+    gap: 0 10px;
     align-items: center;
+
+    .noteTitle ~ input{
+      visibility: hidden;
+    }
+
+    .inputVisible ~ input{
+        visibility: visible;
+    }
+  }
+
+  .rightSideNote {
+    display: flex;
+    gap: 0 10px;
+    align-items: center;
+
+    svg {
+      path {
+        transition: all .2s ease;
+      }
+      cursor: pointer;
+    }
+
+    svg:hover {
+      path {
+        stroke: var(--main-color);
+      }
+    }
   }
 }
 

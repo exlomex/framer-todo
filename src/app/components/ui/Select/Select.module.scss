@@ -1,0 +1,22 @@
+.Select {
+    width: 140px;
+    height: 40px;
+    border-radius: 6px;
+    background-color: var(--main-color);
+    color: var(--bg);
+    font-weight: 500;
+    font-size: 0.95em;
+    padding: 10px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    cursor: pointer;
+
+    appearance: none;
+    option {
+        background-color: var(--bg);
+        color: var(--color);
+        outline: 1px var(--main-color) solid;
+    }
+}
+
