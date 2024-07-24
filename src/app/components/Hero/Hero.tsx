@@ -8,7 +8,8 @@ import { getSearchQuery } from '@/app/store/selectors/getSearchQuery';
 import { SelectItem } from '@/app/components/ui/Select/Select';
 import { FilterActions } from '@/app/store/reducers/FilterSlice';
 import { filterValues } from '@/app/store/reducers/FilterSliceSchema';
-import { Select } from '../ui/Select';
+import { Select } from '@/app/components/ui/Select';
+import { motion } from 'framer-motion';
 import cls from './Hero.module.scss';
 
 interface HeroProps {
@@ -40,13 +41,29 @@ export const Hero = (props: HeroProps) => {
         dispatch(FilterActions.changeFilter(e.target.value as filterValues));
     }, [dispatch]);
 
+    const textAnimation = {
+        hidden: {
+            y: -100,
+            opacity: 0,
+        },
+        visible: (custom) => ({
+            y: 0,
+            opacity: 1,
+            transition: { delay: custom * 0.2 },
+        }),
+    };
+
     return (
-        <div className={classNames(cls.Hero, {}, [className])}>
-            <h1 className={cls.headerName}>TODO лист</h1>
-            <div className={cls.searchContainer}>
+        <motion.div
+            className={classNames(cls.Hero, {}, [className])}
+            initial="hidden"
+            whileInView="visible"
+        >
+            <motion.h1 variants={textAnimation} custom={0} className={cls.headerName}>TODO лист</motion.h1>
+            <motion.div className={cls.searchContainer} custom={1} variants={textAnimation}>
                 <Search placeholder={'Поиск...'} value={query} onChange={handleQueryChanging}/>
                 <Select items={DropDownItems} onChange={onFilterChangeHandler}/>
-            </div>
-        </div>
+            </motion.div>
+        </motion.div>
     );
 };

@@ -5,7 +5,8 @@ import { DeleteIcon } from '@/app/components/Icons/ui/DeleteIcon';
 import { NoteTitle } from '@/app/components/ui/NoteTitle';
 import { useAppDispatch } from '@/app/hooks/useAppDispatch';
 import { NoteActions } from '@/app/store/reducers/NoteSlice';
-import { useState } from 'react';
+import { forwardRef, useState } from 'react';
+import { motion } from 'framer-motion';
 import cls from './Note.module.scss';
 
 interface NoteProps {
@@ -16,7 +17,7 @@ interface NoteProps {
     editStatus: boolean;
 }
 
-export const Note = (props: NoteProps) => {
+export const Note = forwardRef((props: NoteProps, ref) => {
     const dispatch = useAppDispatch();
 
     const {
@@ -41,7 +42,7 @@ export const Note = (props: NoteProps) => {
     };
 
     return (
-        <div className={classNames(cls.Note, {}, [className])}>
+        <div ref={ref} className={classNames(cls.Note, {}, [className])}>
             <div className={cls.leftSideNote}>
                 <CheckBox id={id} status={status}/>
                 <NoteTitle
@@ -57,4 +58,6 @@ export const Note = (props: NoteProps) => {
             </div>
         </div>
     );
-};
+});
+
+export const MNote = motion(Note);

@@ -8,7 +8,8 @@ import { getNotes } from '@/app/store/selectors/getNotes';
 import { getFilterValue } from '@/app/store/selectors/getFilterValue';
 import { filterValues } from '@/app/store/reducers/FilterSliceSchema';
 import { Note as TNote } from '@/app/store/reducers/NoteSliceSchema';
-import { Note } from '@/app/components/ui/Note';
+import { AnimatePresence, motion } from 'framer-motion';
+import { MNote } from '@/app/components/ui/Note/Note';
 import cls from './Notes.module.scss';
 
 interface NotesProps {
@@ -55,15 +56,41 @@ export const Notes = (props: NotesProps) => {
 
     notes = notes.filter((note) => note.title.includes(search)).filter(filterValuesCases);
 
+    const textAnimation = {
+        hidden: {
+            x: -100,
+            opacity: 0,
+        },
+        visible: (custom) => ({
+            x: 0,
+            opacity: 1,
+            transition: { delay: custom * 0.2 },
+        }),
+        exit: (custom) => ({
+            opacity: 0,
+            x: -100,
+            transition: { delay: custom * 0.01 },
+        }),
+    };
+
     return (
-        <div className={classNames(cls.Notes, {}, [className])}>
-            {notes.map((note) => (
-                <Note
-                    key={note.id}
-                    status={note.status}
-                    title={note.title} id={note.id}
-                    editStatus={note.editStatus}/>
-            ))}
+        <div className={classNames(cls.Notes, {}, [className])}
+        >
+            <AnimatePresence>
+                {notes.map((note, index) => (
+                    <MNote
+                        key={note.id}
+                        status={note.status}
+                        title={note.title} id={note.id}
+                        editStatus={note.editStatus}
+                        variants={textAnimation}
+                        custom={2 + index}
+                        initial="hidden"
+                        whileInView="visible"
+                        exit="exit"
+                    />
+                ))}
+            </AnimatePresence>
         </div>
     );
 };

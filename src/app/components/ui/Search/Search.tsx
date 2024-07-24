@@ -1,6 +1,7 @@
 import { classNames } from '@/app/lib/classNames';
-import React, { InputHTMLAttributes, useCallback } from 'react';
+import React, { forwardRef, InputHTMLAttributes, useCallback } from 'react';
 import { SearchIcon } from '@/app/components/Icons/ui/SearchIcon';
+import { motion } from 'framer-motion';
 import cls from './Search.module.scss';
 
 type HtmlInputProps = Omit<
@@ -14,7 +15,7 @@ interface SearchProps extends HtmlInputProps{
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const Search = (props: SearchProps) => {
+export const Search = forwardRef((props: SearchProps, ref) => {
     const {
         className, value, onChange, ...additional
     } = props;
@@ -30,4 +31,4 @@ export const Search = (props: SearchProps) => {
             <SearchIcon className={cls.searchIcon}/>
         </div>
     );
-};
+});
