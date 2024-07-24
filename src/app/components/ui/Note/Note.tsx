@@ -5,7 +5,7 @@ import { DeleteIcon } from '@/app/components/Icons/ui/DeleteIcon';
 import { NoteTitle } from '@/app/components/ui/NoteTitle';
 import { useAppDispatch } from '@/app/hooks/useAppDispatch';
 import { NoteActions } from '@/app/store/reducers/NoteSlice';
-import { forwardRef, useState } from 'react';
+import { ForwardedRef, forwardRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import cls from './Note.module.scss';
 
@@ -17,7 +17,7 @@ interface NoteProps {
     editStatus: boolean;
 }
 
-export const Note = forwardRef((props: NoteProps, ref) => {
+export const Note = forwardRef((props: NoteProps, ref: ForwardedRef<HTMLDivElement>) => {
     const dispatch = useAppDispatch();
 
     const {

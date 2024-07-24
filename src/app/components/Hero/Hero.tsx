@@ -46,7 +46,7 @@ export const Hero = (props: HeroProps) => {
             y: -100,
             opacity: 0,
         },
-        visible: (custom) => ({
+        visible: (custom: number) => ({
             y: 0,
             opacity: 1,
             transition: { delay: custom * 0.2 },
@@ -59,7 +59,12 @@ export const Hero = (props: HeroProps) => {
             initial="hidden"
             whileInView="visible"
         >
-            <motion.h1 variants={textAnimation} custom={0} className={cls.headerName}>TODO лист</motion.h1>
+            <motion.h1
+                variants={textAnimation} custom={0}
+                className={cls.headerName}
+            >
+                TODO лист
+            </motion.h1>
             <motion.div className={cls.searchContainer} custom={1} variants={textAnimation}>
                 <Search placeholder={'Поиск...'} value={query} onChange={handleQueryChanging}/>
                 <Select items={DropDownItems} onChange={onFilterChangeHandler}/>

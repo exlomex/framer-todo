@@ -61,12 +61,12 @@ export const Notes = (props: NotesProps) => {
             x: -100,
             opacity: 0,
         },
-        visible: (custom) => ({
+        visible: (custom: number) => ({
             x: 0,
             opacity: 1,
             transition: { delay: custom * 0.2 },
         }),
-        exit: (custom) => ({
+        exit: (custom: number) => ({
             opacity: 0,
             x: -100,
             transition: { delay: custom * 0.01 },
