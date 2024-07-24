@@ -25,20 +25,6 @@ export const Notes = (props: NotesProps) => {
 
     const search = useSelector(getSearchQuery);
 
-    useEffect(() => {
-        dispatch(NoteActions.changeStatus({ id: 1 }));
-        dispatch(NoteActions.changeTitle({ id: 1, title: '3131312' }));
-        dispatch(NoteActions.addNote({
-            id: 2, title: '3131312', status: false, editStatus: false,
-        }));
-        dispatch(NoteActions.addNote({
-            id: 3, title: '313dghjfjhfg1312', status: false, editStatus: false,
-        }));
-        dispatch(NoteActions.addNote({
-            id: 4, title: 'ghfdg', status: false, editStatus: false,
-        }));
-    }, [dispatch]);
-
     const filterValue = useSelector(getFilterValue);
 
     const filterValuesCases = (note: TNote) => {
