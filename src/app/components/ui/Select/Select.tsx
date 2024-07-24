@@ -8,7 +8,6 @@ import {
 } from '@headlessui/react';
 import { filterValues } from '@/app/store/reducers/FilterSliceSchema';
 import cls from './Select.module.scss';
-import '@/app/styles/headlessStyles.css';
 
 export interface SelectItem {
     value?: filterValues;

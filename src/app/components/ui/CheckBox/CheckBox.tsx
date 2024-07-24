@@ -7,7 +7,7 @@ import cls from './CheckBox.module.scss';
 
 interface CheckBoxProps {
     className?: string;
-    id: number;
+    id: number | string;
     status: boolean;
 }
 export const CheckBox = (props: CheckBoxProps) => {

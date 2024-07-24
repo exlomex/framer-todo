@@ -11,7 +11,7 @@ import cls from './Note.module.scss';
 
 interface NoteProps {
     className?: string;
-    id: number;
+    id: number | string;
     title: string;
     status: boolean;
     editStatus: boolean;

@@ -1,0 +1,12 @@
+.ModalAddButton {
+  width: 45px;
+  height: 45px;
+  background-color: var(--main-color);
+  position: fixed;
+  right: 41px;
+  bottom: 41px;
+  border-radius: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
