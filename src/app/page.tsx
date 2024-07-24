@@ -1,6 +1,6 @@
 'use client';
 
-import { classNames } from '@/app/lib/ClassNames';
+import { classNames } from '@/app/lib/classNames';
 import { Hero } from '@/app/components/Hero';
 import { Notes } from '@/app/components/Notes';
 import { Modal } from '@/app/components/ui/Modal';

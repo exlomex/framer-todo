@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Checkbox } from '@headlessui/react';
-import { classNames } from '@/app/lib/ClassNames';
+import { classNames } from '@/app/lib/classNames';
 import { useAppDispatch } from '@/app/hooks/useAppDispatch';
 import { NoteActions } from '@/app/store/reducers/NoteSlice';
 import cls from './CheckBox.module.scss';

@@ -2,7 +2,6 @@ import { classNames } from '@/app/lib/classNames';
 import { CheckBox } from '@/app/components/ui/CheckBox';
 import { EditIcon } from '@/app/components/Icons/ui/EditIcon';
 import { DeleteIcon } from '@/app/components/Icons/ui/DeleteIcon';
-import { AddIcon } from '@/app/components/Icons/ui/AddIcon';
 import { NoteTitle } from '@/app/components/ui/NoteTitle';
 import { useAppDispatch } from '@/app/hooks/useAppDispatch';
 import { NoteActions } from '@/app/store/reducers/NoteSlice';

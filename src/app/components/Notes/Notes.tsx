@@ -3,11 +3,12 @@ import { useAppDispatch } from '@/app/hooks/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { NoteActions } from '@/app/store/reducers/NoteSlice';
-import { Note } from '@/app/components/ui/Note';
 import { getSearchQuery } from '@/app/store/selectors/getSearchQuery';
 import { getNotes } from '@/app/store/selectors/getNotes';
 import { getFilterValue } from '@/app/store/selectors/getFilterValue';
 import { filterValues } from '@/app/store/reducers/FilterSliceSchema';
+import { Note as TNote } from '@/app/store/reducers/NoteSliceSchema';
+import { Note } from '@/app/components/ui/Note';
 import cls from './Notes.module.scss';
 
 interface NotesProps {
@@ -39,7 +40,7 @@ export const Notes = (props: NotesProps) => {
 
     const filterValue = useSelector(getFilterValue);
 
-    const filterValuesCases = (note: Note) => {
+    const filterValuesCases = (note: TNote) => {
         switch (filterValue) {
         case filterValues.ALL: {
             return note;
